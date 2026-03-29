@@ -1,0 +1,2031 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clara Morel — Coach de Vie</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --sage: #7a9e7e;
+      --sage-l: #b0c8b3;
+      --sage-d: #4a6e4e;
+      --sage-bg: #f2f7f2;
+      --cream: #faf7f2;
+      --warm: #f5ede0;
+      --warm-d: #ede0cc;
+      --terra: #c4785a;
+      --terra-l: #d49a80;
+      --terra-d: #a05a3e;
+      --charcoal: #231f1a;
+      --mid: #7a7068;
+      --light: #e8dfd0;
+      --white: #fff;
+      --black: #0a0806;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CURSOR */
+    .cur {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--terra);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width .2s, height .2s;
+    }
+
+    .cur-r {
+      position: fixed;
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid var(--sage);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      opacity: .5;
+      transition: all .35s;
+    }
+
+    .cur-r.big {
+      width: 64px;
+      height: 64px;
+      opacity: .2;
+      border-color: var(--terra);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      padding: 24px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all .4s;
+    }
+
+    nav.solid {
+      background: rgba(250, 247, 242, .96);
+      backdrop-filter: blur(20px);
+      padding: 16px 64px;
+      border-bottom: 1px solid rgba(122, 158, 126, .15);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: .03em;
+      transition: color .3s;
+    }
+
+    nav.solid .logo {
+      color: var(--charcoal);
+    }
+
+    .logo em {
+      font-style: italic;
+      color: var(--sage-l);
+    }
+
+    nav.solid .logo em {
+      color: var(--sage);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      letter-spacing: .06em;
+      color: rgba(255, 255, 255, .6);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    nav.solid .nav-links a {
+      color: var(--mid);
+    }
+
+    .nav-links a:hover {
+      color: var(--terra) !important;
+    }
+
+    .nav-pill {
+      padding: 11px 24px;
+      border: 1.5px solid rgba(255, 255, 255, .4);
+      color: var(--white);
+      font-size: 13px;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all .25s;
+      white-space: nowrap;
+    }
+
+    nav.solid .nav-pill {
+      border-color: var(--terra);
+      color: var(--terra);
+    }
+
+    .nav-pill:hover {
+      background: var(--terra);
+      border-color: var(--terra);
+      color: var(--white) !important;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-img-side {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-img-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 8s ease;
+      transform: scale(1.08);
+    }
+
+    .hero-img-side::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(35, 31, 26, .6) 0%, rgba(35, 31, 26, .1) 100%);
+    }
+
+    .hero-left {
+      background: var(--charcoal);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 80px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Organic texture overlay */
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 0% 100%, rgba(122, 158, 126, .25) 0%, transparent 60%), radial-gradient(ellipse at 100% 0%, rgba(196, 120, 90, .1) 0%, transparent 50%);
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--sage-l);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp .8s ease forwards .4s;
+      position: relative;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--sage);
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp .9s ease forwards .6s;
+      position: relative;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--terra-l);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255, 255, 255, .5);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 420px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp .9s ease forwards .8s;
+      position: relative;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      opacity: 0;
+      animation: fadeUp .9s ease forwards 1s;
+      position: relative;
+    }
+
+    .btn-terra {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 40px;
+      background: var(--terra);
+      color: var(--white);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all .3s;
+      align-self: flex-start;
+    }
+
+    .btn-terra:hover {
+      background: var(--terra-l);
+      transform: translateX(6px);
+    }
+
+    .btn-terra-arr {
+      font-size: 16px;
+      transition: transform .3s;
+    }
+
+    .btn-terra:hover .btn-terra-arr {
+      transform: translateX(4px);
+    }
+
+    .hero-ghost-link {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .35);
+      text-decoration: none;
+      transition: color .2s;
+      letter-spacing: .04em;
+    }
+
+    .hero-ghost-link:hover {
+      color: var(--sage-l);
+    }
+
+    /* Hero right overlay content */
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 48px;
+      left: -48px;
+      z-index: 10;
+      background: var(--cream);
+      padding: 24px 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .12);
+      min-width: 200px;
+      opacity: 0;
+      animation: fadeIn .8s ease forwards 1.2s;
+    }
+
+    .hb-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+
+    .hb-num em {
+      color: var(--terra);
+      font-style: normal;
+      font-size: 28px;
+    }
+
+    .hb-label {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 4px;
+    }
+
+    /* Scroll indicator */
+    .scroll-ind {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1.5s;
+    }
+
+    .scroll-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--terra);
+      border-radius: 50%;
+      animation: bounce 2s ease infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .scroll-txt {
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .3);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* BAND */
+    .band {
+      background: var(--terra);
+      padding: 0 64px;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    .band-item {
+      flex: 1;
+      padding: 36px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-right: 1px solid rgba(255, 255, 255, .15);
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+
+    .band-item:first-child {
+      padding-left: 0;
+    }
+
+    .band-item:last-child {
+      border-right: none;
+    }
+
+    .band-icon {
+      font-size: 28px;
+      opacity: .8;
+    }
+
+    .band-txt-label {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .6);
+      margin-bottom: 4px;
+    }
+
+    .band-txt-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: var(--white);
+      font-style: italic;
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 120px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .intro-img {
+      position: relative;
+    }
+
+    .intro-img-frame {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: .85;
+    }
+
+    .intro-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform .6s ease;
+    }
+
+    .intro-img-frame:hover img {
+      transform: scale(1.04);
+    }
+
+    .intro-img-deco {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 55%;
+      height: 55%;
+      border: 2px solid var(--sage-l);
+      z-index: -1;
+    }
+
+    .intro-img-tag {
+      position: absolute;
+      bottom: 24px;
+      left: -24px;
+      background: var(--sage-d);
+      color: var(--white);
+      padding: 16px 20px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .intro-text {}
+
+    .intro-eyebrow {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .intro-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1.5px;
+      background: var(--terra);
+    }
+
+    .intro-h {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--charcoal);
+    }
+
+    .intro-h em {
+      font-style: italic;
+      color: var(--sage-d);
+    }
+
+    .intro-p {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .certif {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--sage-bg);
+      padding: 12px 18px;
+      margin-top: 12px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--sage-d);
+    }
+
+    .certif strong {
+      font-weight: 500;
+    }
+
+    .intro-sig {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-style: italic;
+      color: var(--sage-d);
+      margin-top: 28px;
+    }
+
+    .intro-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      font-size: 13px;
+      letter-spacing: .06em;
+      color: var(--terra);
+      text-decoration: none;
+      transition: gap .2s;
+    }
+
+    .intro-cta:hover {
+      gap: 14px;
+    }
+
+    /* SERVICES */
+    .services {
+      padding: 100px 64px;
+      background: var(--warm);
+    }
+
+    .services-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+
+    .services-note {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.75;
+      font-weight: 300;
+      max-width: 420px;
+    }
+
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .svc {
+      background: var(--white);
+      overflow: hidden;
+      position: relative;
+      transition: transform .35s, box-shadow .35s;
+    }
+
+    .svc:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 32px 64px rgba(0, 0, 0, .08);
+    }
+
+    .svc-img {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .svc-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .svc:hover .svc-img img {
+      transform: scale(1.06);
+    }
+
+    .svc-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(35, 31, 26, .5) 0%, transparent 60%);
+    }
+
+    .svc-img-tag {
+      position: absolute;
+      bottom: 16px;
+      left: 20px;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .8);
+    }
+
+    .svc-body {
+      padding: 32px 28px;
+    }
+
+    .svc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .svc-desc {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .svc-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--light);
+    }
+
+    .svc-detail {
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--sage-d);
+    }
+
+    .svc-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--terra);
+    }
+
+    .svc-price small {
+      font-size: 13px;
+      font-family: 'Outfit', sans-serif;
+      color: var(--mid);
+    }
+
+    /* PROCESS */
+    .process {
+      padding: 100px 64px;
+    }
+
+    .process-head {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 12%;
+      width: 76%;
+      height: 1px;
+      background: var(--light);
+    }
+
+    .pstep {
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .pstep-ring {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 1.5px solid var(--light);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--mid);
+      transition: all .3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pstep:hover .pstep-ring {
+      border-color: var(--terra);
+      background: var(--terra);
+      color: var(--white);
+    }
+
+    .pstep-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .pstep-desc {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* SPLIT SECTION */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+
+    .split-img {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .split-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 6s ease;
+    }
+
+    .split-img:hover img {
+      transform: scale(1.04);
+    }
+
+    .split-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(35, 31, 26, .3);
+    }
+
+    .split-content {
+      background: var(--charcoal);
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .split-tag {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--terra-l);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .split-tag::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--terra-l);
+    }
+
+    .split-h {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 40px;
+    }
+
+    .split-h em {
+      font-style: italic;
+      color: var(--sage-l);
+    }
+
+    .split-quotes {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .sq {
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .sq:first-child {
+      padding-top: 0;
+    }
+
+    .sq:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .sq-txt {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .sq-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sq-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--sage-d);
+      flex-shrink: 0;
+    }
+
+    .sq-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .sq-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .sq-role {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .3);
+      margin-top: 1px;
+    }
+
+    .sq-stars {
+      color: var(--terra-l);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    /* VALUES */
+    .values {
+      padding: 100px 64px;
+      background: var(--sage-bg);
+    }
+
+    .values-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .val-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .val-item {
+      display: flex;
+      gap: 28px;
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(122, 158, 126, .2);
+      transition: padding .3s;
+    }
+
+    .val-item:last-child {
+      border-bottom: none;
+    }
+
+    .val-item:hover {
+      padding-left: 10px;
+    }
+
+    .val-n {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 400;
+      color: rgba(122, 158, 126, .25);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 60px;
+      transition: color .3s;
+    }
+
+    .val-item:hover .val-n {
+      color: var(--terra);
+    }
+
+    .val-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .val-desc {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .val-cta {
+      background: var(--white);
+      padding: 48px;
+      border-top: 3px solid var(--terra);
+    }
+
+    .vct-label {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 14px;
+    }
+
+    .vct-h {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-bottom: 24px;
+      color: var(--charcoal);
+    }
+
+    .vct-h em {
+      font-style: italic;
+      color: var(--sage-d);
+    }
+
+    .vct-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 32px;
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: 13px;
+      letter-spacing: .06em;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all .25s;
+    }
+
+    .vct-btn:hover {
+      background: var(--terra);
+      transform: translateY(-2px);
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 100px 64px;
+      background: var(--white);
+    }
+
+    .faq-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .faq-side {}
+
+    .faq-img {
+      width: 100%;
+      aspect-ratio: .75;
+      overflow: hidden;
+      position: relative;
+      margin-top: 40px;
+    }
+
+    .faq-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .faq-list {}
+
+    .faq-item {
+      border-bottom: 1px solid var(--light);
+    }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--charcoal);
+      cursor: none;
+      transition: color .2s;
+      gap: 16px;
+    }
+
+    .faq-q:hover {
+      color: var(--sage-d);
+    }
+
+    .faq-tog {
+      width: 32px;
+      height: 32px;
+      border: 1.5px solid var(--light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--mid);
+      flex-shrink: 0;
+      transition: all .3s;
+    }
+
+    .faq-item.open .faq-tog {
+      background: var(--terra);
+      border-color: var(--terra);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .4s;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 160px;
+      padding-bottom: 20px;
+    }
+
+    .faq-a p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    /* CONTACT */
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-img {
+      position: relative;
+      overflow: hidden;
+      min-height: 700px;
+    }
+
+    .contact-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .contact-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(35, 31, 26, .7) 0%, rgba(35, 31, 26, .2) 50%, transparent 100%);
+    }
+
+    .contact-img-text {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+      right: 48px;
+    }
+
+    .cit-label {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--sage-l);
+      margin-bottom: 8px;
+    }
+
+    .cit-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.5;
+    }
+
+    .contact-form-side {
+      background: var(--charcoal);
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cf-label {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--terra-l);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cf-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--terra-l);
+    }
+
+    .cf-h {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .cf-h em {
+      font-style: italic;
+      color: var(--sage-l);
+    }
+
+    .cf-sub {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .35);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 48px;
+      max-width: 360px;
+    }
+
+    .fg {
+      margin-bottom: 24px;
+    }
+
+    .fl {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .25);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .fi {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      padding: 11px 0;
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      outline: none;
+      transition: border-color .3s;
+    }
+
+    .fi:focus {
+      border-color: var(--terra-l);
+    }
+
+    .fi::placeholder {
+      color: rgba(255, 255, 255, .15);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .fsub {
+      padding: 16px 44px;
+      background: var(--terra);
+      color: var(--white);
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      letter-spacing: .08em;
+      cursor: none;
+      transition: all .25s;
+      border-radius: 100px;
+      margin-top: 12px;
+    }
+
+    .fsub:hover {
+      background: var(--terra-l);
+      transform: translateY(-2px);
+    }
+
+    .cf-infos {
+      display: flex;
+      gap: 32px;
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .cf-info-item {}
+
+    .cf-info-l {
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--terra-l);
+      margin-bottom: 3px;
+    }
+
+    .cf-info-v {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .4);
+      font-weight: 300;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      padding: 64px 64px 36px;
+    }
+
+    .foot-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+    }
+
+    .foot-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: rgba(255, 255, 255, .4);
+      margin-bottom: 10px;
+    }
+
+    .foot-logo em {
+      color: var(--sage);
+      font-style: normal;
+    }
+
+    .foot-desc {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .18);
+      line-height: 1.75;
+      font-weight: 300;
+      max-width: 260px;
+    }
+
+    .foot-ct {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 16px;
+    }
+
+    .foot-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .foot-links a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .22);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .foot-links a:hover {
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .foot-bot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+    }
+
+    .foot-copy {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .12);
+    }
+
+    .foot-badge {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .08);
+    }
+
+    /* TAG helper */
+    .tag {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--terra);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .tag::before {
+      content: '';
+      width: 24px;
+      height: 1.5px;
+      background: var(--terra);
+    }
+
+    .h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 56px;
+    }
+
+    .h2 em {
+      font-style: italic;
+      color: var(--sage-d);
+    }
+
+    /* REVEAL */
+    .rev {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .rev.vis {
+      opacity: 1;
+      transform: none;
+    }
+
+    .rev-d1 {
+      transition-delay: .1s;
+    }
+
+    .rev-d2 {
+      transition-delay: .2s;
+    }
+
+    .rev-d3 {
+      transition-delay: .3s;
+    }
+
+    .rev-d4 {
+      transition-delay: .4s;
+    }
+
+    @media(max-width:900px) {
+
+      nav,
+      nav.solid {
+        padding: 16px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
+      }
+
+      .hero-img-side {
+        height: 50vh;
+      }
+
+      .hero-badge {
+        display: none;
+      }
+
+      .intro,
+      .values-inner,
+      .faq-inner,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .split-img {
+        height: 300px;
+      }
+
+      .services,
+      .process,
+      .values,
+      .faq,
+      .intro {
+        padding: 72px 24px;
+      }
+
+      .band {
+        padding: 0 24px;
+        flex-direction: column;
+      }
+
+      .band-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .15);
+        padding: 24px 0;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-form-side {
+        padding: 60px 24px;
+      }
+
+      .cf-infos {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .foot-top {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      footer {
+        padding: 40px 24px 28px;
+      }
+
+      .hero-left {
+        padding: 80px 24px 60px;
+      }
+
+      .split-content {
+        padding: 60px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cur" id="cur"></div>
+  <div class="cur-r" id="cur-r"></div>
+
+  <nav id="nav">
+    <a href="#" class="logo">Clara <em>Morel</em></a>
+    <ul class="nav-links">
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#processus">Processus</a></li>
+      <li><a href="#temoignages">Témoignages</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-pill">Appel gratuit</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-label">Coach de vie certifiée ICF · Genève & à distance</p>
+      <h1 class="hero-h1">Devenez enfin<br>la personne<br><em>que vous voulez être.</em></h1>
+      <p class="hero-sub">Un accompagnement sur-mesure pour celles et ceux qui veulent avancer avec clarté, confiance et
+        intention — dans leur vie et leur carrière.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-terra">Réserver un appel gratuit <span class="btn-terra-arr">→</span></a>
+        <a href="#services" class="hero-ghost-link">Découvrir les offres ↓</a>
+      </div>
+    </div>
+    <div class="hero-img-side hero-right">
+      <img src="https://images.unsplash.com/photo-1527525443983-6e60c75fff46?w=2400&q=100"
+        alt="Groupe de personnes se tenant par la main en forêt" id="heroImg"
+        onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=85'">
+
+    </div>
+    <div class="scroll-ind" style="position:absolute;bottom:40px;right:40px;z-index:2;">
+      <div class="scroll-dot"></div>
+      <p class="scroll-txt"
+        style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:6px;">
+        Scroll</p>
+    </div>
+  </section>
+
+  <!-- BAND -->
+  <div class="band rev">
+    <div class="band-item">
+      <span class="band-icon">🌿</span>
+      <div>
+        <p class="band-txt-label">Certification</p>
+        <p class="band-txt-val">ICF · Niveau ACC</p>
+      </div>
+    </div>
+    <div class="band-item">
+      <span class="band-icon">⏱</span>
+      <div>
+        <p class="band-txt-label">Appel découverte</p>
+        <p class="band-txt-val">Gratuit · 30 minutes</p>
+      </div>
+    </div>
+    <div class="band-item">
+      <span class="band-icon">📍</span>
+      <div>
+        <p class="band-txt-label">Format</p>
+        <p class="band-txt-val">Genève & visio</p>
+      </div>
+    </div>
+    <div class="band-item">
+      <span class="band-icon">💬</span>
+      <div>
+        <p class="band-txt-label">Réponse</p>
+        <p class="band-txt-val">Sous 24 heures</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- À PROPOS -->
+  <section class="intro rev" id="apropos">
+    <div class="intro-img rev">
+      <div class="intro-img-frame">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=85"
+          alt="Clara Morel, coach de vie"
+          onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=85'">
+      </div>
+      <div class="intro-img-deco"></div>
+      <div class="intro-img-tag">Coach certifiée ICF</div>
+    </div>
+    <div class="intro-text rev rev-d1">
+      <p class="intro-eyebrow">À propos</p>
+      <h2 class="intro-h">Je suis Clara.<br><em>Je vous aide à vous retrouver.</em></h2>
+      <p class="intro-p">Après 10 ans dans le conseil en entreprise, j'ai traversé moi-même une période de
+        questionnement profond. C'est cette expérience personnelle qui m'a menée vers le coaching — et vers vous.</p>
+      <p class="intro-p">Je travaille avec des particuliers et des professionnels qui sentent qu'ils sont à un tournant
+        de leur vie, sans encore savoir quelle direction prendre.</p>
+      <div class="certif">✓ <strong>Certifiée ICF</strong> · International Coaching Federation</div>
+      <p class="intro-p">Mon approche est directe, bienveillante et sans jugement. Ensemble, on clarifie, on décide, on
+        avance.</p>
+      <div class="intro-sig">Clara Morel</div>
+      <a href="#contact" class="intro-cta">Réserver un appel découverte →</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-head">
+      <div>
+        <p class="tag rev">Ce que je propose</p>
+        <h2 class="h2 rev" style="margin-bottom:0;">Un accompagnement <em>à votre rythme.</em></h2>
+      </div>
+      <p class="services-note rev">Chaque programme est conçu pour s'adapter à votre situation, vos objectifs et votre
+        disponibilité.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc rev">
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=80" alt="Bilan de vie"
+            onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80'">
+          <div class="svc-img-overlay"></div>
+          <span class="svc-img-tag">Bilan de vie</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="svc-name">Bilan de vie</h3>
+          <p class="svc-desc">Un espace pour faire le point. Où en êtes-vous ? Qu'est-ce qui vous pèse ? Qu'est-ce que
+            vous voulez vraiment ? Idéal pour démarrer.</p>
+          <div class="svc-meta">
+            <span class="svc-detail">3 séances · 90 min</span>
+            <span class="svc-price">490 <small>CHF</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="svc rev rev-d1">
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80" alt="Suivi mensuel"
+            onerror="this.src='https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=600&q=80'">
+          <div class="svc-img-overlay"></div>
+          <span class="svc-img-tag">Suivi mensuel</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="svc-name">Suivi mensuel</h3>
+          <p class="svc-desc">Un accompagnement régulier sur 3 à 6 mois pour ancrer les changements, surmonter les
+            blocages et aller plus loin que vous ne l'imaginez.</p>
+          <div class="svc-meta">
+            <span class="svc-detail">4 séances / mois · 60 min</span>
+            <span class="svc-price">360 <small>CHF/mois</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="svc rev rev-d2">
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Atelier groupe"
+            onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&q=80'">
+          <div class="svc-img-overlay"></div>
+          <span class="svc-img-tag">Atelier groupe</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="svc-name">Atelier groupe</h3>
+          <p class="svc-desc">Sessions collectives en petit groupe (4–8 personnes) sur des thèmes ciblés : confiance en
+            soi, transitions professionnelles, relations.</p>
+          <div class="svc-meta">
+            <span class="svc-detail">4–8 pers. · 2h</span>
+            <span class="svc-price">120 <small>CHF</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="processus">
+    <div class="process-head">
+      <p class="tag rev" style="justify-content:center;">Comment ça marche</p>
+      <h2 class="h2 rev" style="text-align:center;margin-bottom:0;">Quatre étapes <em>simples.</em></h2>
+    </div>
+    <div class="process-grid">
+      <div class="pstep rev">
+        <div class="pstep-ring">1</div>
+        <h3 class="pstep-name">Appel découverte</h3>
+        <p class="pstep-desc">30 min gratuits. On se rencontre, vous expliquez où vous en êtes, on voit si on travaille
+          bien ensemble.</p>
+      </div>
+      <div class="pstep rev rev-d1">
+        <div class="pstep-ring">2</div>
+        <h3 class="pstep-name">Évaluation</h3>
+        <p class="pstep-desc">On identifie vos besoins réels, vos objectifs et le programme le plus adapté à votre
+          situation.</p>
+      </div>
+      <div class="pstep rev rev-d2">
+        <div class="pstep-ring">3</div>
+        <h3 class="pstep-name">Accompagnement</h3>
+        <p class="pstep-desc">Les séances — en présentiel à Genève ou en visio — avec des outils concrets entre chaque
+          session.</p>
+      </div>
+      <div class="pstep rev rev-d3">
+        <div class="pstep-ring">4</div>
+        <h3 class="pstep-name">Ancrage</h3>
+        <p class="pstep-desc">On consolide les changements pour qu'ils durent. Vous repartez avec des habitudes et une
+          clarté durable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="split" id="temoignages">
+    <div class="split-img">
+      <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=900&q=85" alt="Nature apaisante forêt"
+        onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=85'">
+      <div class="split-img-overlay"></div>
+    </div>
+    <div class="split-content">
+      <p class="split-tag">Témoignages</p>
+      <h2 class="split-h">Des <em>transformations réelles.</em></h2>
+      <div class="split-quotes">
+        <div class="sq rev">
+          <div class="sq-stars">★★★★★</div>
+          <p class="sq-txt">"Après 8 ans dans un job qui ne me correspondait plus, Clara m'a aidée à oser la transition.
+            Je suis aujourd'hui indépendante et je n'ai jamais été aussi épanouie."</p>
+          <div class="sq-author">
+            <div class="sq-avatar">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Sophie R."
+                onerror="this.style.display='none'">
+            </div>
+            <div>
+              <div class="sq-name">Sophie R.</div>
+              <div class="sq-role">Ancienne consultante, aujourd'hui créatrice</div>
+            </div>
+          </div>
+        </div>
+        <div class="sq rev rev-d1">
+          <div class="sq-stars">★★★★★</div>
+          <p class="sq-txt">"Je venais d'un divorce difficile et je ne savais plus qui j'étais. Les séances avec Clara
+            m'ont redonné confiance et une direction claire."</p>
+          <div class="sq-author">
+            <div class="sq-avatar">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Marc D."
+                onerror="this.style.display='none'">
+            </div>
+            <div>
+              <div class="sq-name">Marc D.</div>
+              <div class="sq-role">Chef de projet, père de deux enfants</div>
+            </div>
+          </div>
+        </div>
+        <div class="sq rev rev-d2">
+          <div class="sq-stars">★★★★★</div>
+          <p class="sq-txt">"L'atelier groupe était une révélation. Réaliser qu'on n'est pas seul dans ses blocages,
+            avec des outils concrets — ça change vraiment tout."</p>
+          <div class="sq-author">
+            <div class="sq-avatar">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Léa P."
+                onerror="this.style.display='none'">
+            </div>
+            <div>
+              <div class="sq-name">Léa P.</div>
+              <div class="sq-role">Infirmière, participante atelier</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p
+        style="font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.18);text-transform:uppercase;margin-top:32px;">
+        Témoignages avec accord · Noms modifiés</p>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values" id="valeurs">
+    <p class="tag rev">Mon approche</p>
+    <h2 class="h2 rev">Ce en quoi <em>je crois.</em></h2>
+    <div class="values-inner">
+      <div class="val-list">
+        <div class="val-item rev">
+          <div class="val-n">01</div>
+          <div>
+            <h3 class="val-title">Écoute sans jugement</h3>
+            <p class="val-desc">Chaque histoire est unique. Je n'ai pas de modèle préconçu — je suis là pour vous aider
+              à trouver le vôtre.</p>
+          </div>
+        </div>
+        <div class="val-item rev rev-d1">
+          <div class="val-n">02</div>
+          <div>
+            <h3 class="val-title">Actions concrètes</h3>
+            <p class="val-desc">Le coaching n'est pas de la thérapie. On travaille sur des décisions, des habitudes, des
+              actions mesurables semaine après semaine.</p>
+          </div>
+        </div>
+        <div class="val-item rev rev-d2">
+          <div class="val-n">03</div>
+          <div>
+            <h3 class="val-title">Respect du rythme</h3>
+            <p class="val-desc">On avance à votre vitesse. Pas de pression, pas de jugement si une semaine a été
+              difficile. On s'adapte toujours.</p>
+          </div>
+        </div>
+      </div>
+      <div class="val-cta rev rev-d1">
+        <p class="vct-label">Prête à commencer ?</p>
+        <h3 class="vct-h">Un appel de 30 minutes peut changer la direction que prend votre vie. <em>C'est gratuit.</em>
+        </h3>
+        <a href="#contact" class="vct-btn">Réserver maintenant →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="faq-inner">
+      <div class="faq-side rev">
+        <p class="tag">FAQ</p>
+        <h2 class="h2" style="margin-bottom:24px;">Questions <em>fréquentes.</em></h2>
+        <div class="faq-img">
+          <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600&q=85" alt="Paysage apaisant"
+            onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=85'">
+        </div>
+      </div>
+      <div class="faq-list rev rev-d1">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Le coaching, c'est quoi exactement ? <div class="faq-tog">+</div>
+          </div>
+          <div class="faq-a">
+            <p>Le coaching est un accompagnement orienté vers l'action. Contrairement à la thérapie qui travaille sur le
+              passé, le coaching se concentre sur le présent et l'avenir — sur ce que vous voulez changer ou atteindre
+              concrètement.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Séances en présentiel ou en visio ? <div class="faq-tog">+</div>
+          </div>
+          <div class="faq-a">
+            <p>Les deux sont possibles. Je reçois à Genève (quartier des Eaux-Vives) ou en visio pour les clients à
+              distance. Le format n'impacte pas la qualité de l'accompagnement.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Combien de temps dure un accompagnement ? <div class="faq-tog">+
+            </div>
+          </div>
+          <div class="faq-a">
+            <p>Le bilan de vie se fait en 3 séances. Un suivi mensuel dure généralement 3 à 6 mois. Certaines personnes
+              atteignent leurs objectifs plus vite, d'autres continuent plus longtemps.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Est-ce que je dois avoir un problème précis ? <div
+              class="faq-tog">+</div>
+          </div>
+          <div class="faq-a">
+            <p>Non. Beaucoup viennent juste avec une sensation que "quelque chose ne va pas". C'est largement suffisant
+              pour commencer. La clarté vient au fil des séances.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Quelle différence avec un thérapeute ? <div class="faq-tog">+
+            </div>
+          </div>
+          <div class="faq-a">
+            <p>Un thérapeute travaille sur la guérison et le passé. Un coach travaille sur la performance et le futur.
+              Les deux sont complémentaires. Si vous traversez un trauma sévère, je vous orienterai vers le bon
+              professionnel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-img">
+      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=900&q=85" alt="Chemin nature"
+        onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=85'">
+      <div class="contact-img-overlay"></div>
+      <div class="contact-img-text">
+        <p class="cit-label">Ce que mes clients disent</p>
+        <p class="cit-quote">"Je suis venue sans savoir ce que je voulais. Je suis repartie avec un plan et la confiance
+          pour l'exécuter."</p>
+      </div>
+    </div>
+    <div class="contact-form-side">
+      <p class="cf-label">Contact</p>
+      <h2 class="cf-h">Parlons de <em>votre projet.</em></h2>
+      <p class="cf-sub">L'appel découverte est gratuit et sans engagement — 30 minutes pour voir si on travaille bien
+        ensemble.</p>
+      <form>
+        <div class="form-grid">
+          <div class="fg"><label class="fl">Prénom</label><input type="text" class="fi" placeholder="Sophie"></div>
+          <div class="fg"><label class="fl">Nom</label><input type="text" class="fi" placeholder="Dupont"></div>
+        </div>
+        <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="sophie@example.com">
+        </div>
+        <div class="fg"><label class="fl">Ce qui vous amène</label><input type="text" class="fi"
+            placeholder="Transition pro, confiance, relations..."></div>
+        <div class="fg"><label class="fl">Message (optionnel)</label><input type="text" class="fi"
+            placeholder="Dites-m'en plus si vous voulez..."></div>
+        <button type="submit" class="fsub">Réserver mon appel gratuit →</button>
+      </form>
+      <div class="cf-infos">
+        <div class="cf-info-item">
+          <p class="cf-info-l">Email</p>
+          <p class="cf-info-v">contact@claramorel.ch</p>
+        </div>
+        <div class="cf-info-item">
+          <p class="cf-info-l">Lieu</p>
+          <p class="cf-info-v">Genève & visio</p>
+        </div>
+        <div class="cf-info-item">
+          <p class="cf-info-l">Réponse</p>
+          <p class="cf-info-v">Sous 24h</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">Clara <em>Morel</em></div>
+        <p class="foot-desc">Coach de vie certifiée ICF. Accompagnement personnel et professionnel à Genève et à
+          distance depuis 2018.</p>
+      </div>
+      <div>
+        <p class="foot-ct">Navigation</p>
+        <ul class="foot-links">
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#services">Services & tarifs</a></li>
+          <li><a href="#processus">Comment ça marche</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-ct">Contact</p>
+        <ul class="foot-links">
+          <li><a href="#">contact@claramorel.ch</a></li>
+          <li><a href="#">+41 xx xxx xx xx</a></li>
+          <li><a href="#">Genève, Suisse</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <p class="foot-copy">© 2025 Clara Morel Coaching · Genève · Tous droits réservés</p>
+      <p class="foot-badge">Démonstration — Alto Studio</p>
+    </div>
+  </footer>
+
+  <script>
+    const cur = document.getElementById('cur'), cr = document.getElementById('cur-r');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
+    (function a() { rx += (mx - rx) * .1; ry += (my - ry) * .1; cr.style.left = rx + 'px'; cr.style.top = ry + 'px'; requestAnimationFrame(a); })();
+    document.querySelectorAll('a,button,.svc,.pstep,.sq,.val-item,.faq-q').forEach(el => {
+      el.addEventListener('mouseenter', () => cr.classList.add('big'));
+      el.addEventListener('mouseleave', () => cr.classList.remove('big'));
+    });
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('solid', window.scrollY > 80);
+    });
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+    const obs = new IntersectionObserver(e => {
+      e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('vis'); obs.unobserve(x.target); } });
+    }, { threshold: .1 });
+    document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+    // Slow zoom hero img on load
+    window.addEventListener('load', () => {
+      const img = document.getElementById('heroImg');
+      if (img) img.style.transform = 'scale(1)';
+    });
+  </script>
+</body>
+
+</html>
