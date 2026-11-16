@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réserver un appel découverte — Sillage.</title>
+  <meta name="description"
+    content="Réservez un appel découverte gratuit de 30 minutes avec Inès Vautier, coach certifiée ICF à Lausanne et en visio.">
+  <meta property="og:title" content="Réserver un appel découverte — Sillage.">
+  <meta property="og:description" content="30 minutes offertes, sans engagement, pour parler de votre situation.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="logo" aria-label="Sillage, accueil">
+        <img src="assets/img/logo.svg" alt="" width="34" height="24">Sillage.
+      </a>
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links" id="menu">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="programmes.html">Programmes</a></li>
+          <li><a href="rendez-vous.html" aria-current="page">Rendez-vous</a></li>
+          <li class="nav-links-cta"><a href="rendez-vous.html" class="btn">Réserver un appel <span class="arr"
+                aria-hidden="true"></span></a></li>
+        </ul>
+      </nav>
+      <a href="rendez-vous.html" class="btn nav-cta">Réserver un appel <span class="arr" aria-hidden="true"></span></a>
+      <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+        aria-controls="menu"><span></span></button>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <section class="page-head">
+      <div class="container">
+        <h1>Réserver un appel découverte</h1>
+        <p class="crumb"><a href="index.html">Accueil</a> / <span>Rendez-vous</span></p>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container booking">
+
+        <form class="form rev" id="rdv-form">
+          <h2>Parlez-moi de vous</h2>
+          <p>30 minutes offertes, sans engagement. Je vous réponds sous 24 heures pour fixer un créneau.</p>
+          <div class="fields">
+            <div class="field">
+              <label for="prenom">Prénom</label>
+              <input id="prenom" name="prenom" type="text" autocomplete="given-name" placeholder="Camille" required>
+            </div>
+            <div class="field">
+              <label for="nom">Nom</label>
+              <input id="nom" name="nom" type="text" autocomplete="family-name" placeholder="Rochat" required>
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="camille@exemple.ch"
+                required>
+            </div>
+            <div class="field">
+              <label for="tel">Téléphone <span style="font-weight:400;color:var(--muted)">(facultatif)</span></label>
+              <input id="tel" name="tel" type="tel" autocomplete="tel" placeholder="+41 79 000 00 00">
+            </div>
+            <div class="field">
+              <label for="programme">Programme qui vous intéresse</label>
+              <select id="programme" name="programme">
+                <option value="">Je ne sais pas encore</option>
+                <option value="cap-clarte">Cap Clarté — le bilan</option>
+                <option value="elan">Élan — le suivi sur 3 mois</option>
+                <option value="equilibre">Équilibre — vie pro &amp; perso</option>
+                <option value="cercle">Cercle — l'atelier collectif</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="creneau">Créneau préféré</label>
+              <select id="creneau" name="creneau">
+                <option>Peu importe</option>
+                <option>En matinée (8 h – 12 h)</option>
+                <option>À midi (12 h – 14 h)</option>
+                <option>L'après-midi (14 h – 18 h)</option>
+                <option>En soirée (18 h – 20 h)</option>
+              </select>
+            </div>
+            <div class="field field--full">
+              <label for="message">Ce qui vous amène <span
+                  style="font-weight:400;color:var(--muted)">(facultatif)</span></label>
+              <textarea id="message" name="message"
+                placeholder="Quelques mots sur votre situation, vos questions, vos attentes…"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn">Envoyer ma demande <span class="arr" aria-hidden="true"></span></button>
+          <p class="form-note">Site de démonstration : le formulaire n'envoie aucune donnée.</p>
+          <p class="form-ok" role="status" tabindex="-1"></p>
+        </form>
+
+        <aside class="info">
+          <div class="info-card rev d1">
+            <h2>Coordonnées</h2>
+            <dl>
+              <div>
+                <dt>E-mail</dt>
+                <dd>bonjour@sillage-coaching.ch</dd>
+              </div>
+              <div>
+                <dt>Téléphone</dt>
+                <dd>+41 21 000 00 00</dd>
+              </div>
+              <div>
+                <dt>Cabinet</dt>
+                <dd>Rue du Petit-Chêne 00<br>1003 Lausanne — 3 min à pied de la gare</dd>
+              </div>
+              <div>
+                <dt>Horaires</dt>
+                <dd>Lundi – vendredi, 8 h – 20 h<br>Ateliers Cercle le samedi matin</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="info-wood wood rev d2">
+            <strong>24 h</strong>
+            <p>C'est le délai maximum dans lequel vous recevez une réponse, du lundi au vendredi.</p>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="logo" aria-label="Sillage, accueil">
+            <img src="assets/img/logo.svg" alt="" width="34" height="24">Sillage.
+          </a>
+          <p>Sillage est né d'une conviction : un changement choisi laisse une trace durable. Par l'écoute, des
+            méthodes éprouvées et un cadre exigeant, nous vous aidons à avancer avec clarté et confiance.</p>
+        </div>
+        <div>
+          <h2>Liens rapides</h2>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="programmes.html">Programmes</a></li>
+            <li><a href="rendez-vous.html">Rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li>bonjour@sillage-coaching.ch</li>
+            <li>Rue du Petit-Chêne 00<br>1003 Lausanne</li>
+            <li>+41 21 000 00 00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bot">
+        <p>© 2026 Sillage · Site de démonstration, contenu fictif</p>
+        <p>Démonstration — Alto Studio</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

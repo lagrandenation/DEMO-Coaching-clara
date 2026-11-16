@@ -4,2028 +4,429 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clara Morel — Coach de Vie</title>
+  <title>Sillage. — Coaching de vie à Lausanne et en visio</title>
+  <meta name="description"
+    content="Sillage accompagne celles et ceux qui veulent avancer avec plus de clarté et de confiance. Coaching individuel et ateliers collectifs avec Inès Vautier, coach certifiée ICF.">
+  <meta property="og:title" content="Sillage. — Coaching de vie à Lausanne et en visio">
+  <meta property="og:description"
+    content="Un coaching sur mesure pour retrouver de l'élan et faire des choix qui vous ressemblent.">
+  <meta property="og:type" content="website">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=80&auto=format&fit=crop">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
     rel="stylesheet">
-  <style>
-    :root {
-      --sage: #7a9e7e;
-      --sage-l: #b0c8b3;
-      --sage-d: #4a6e4e;
-      --sage-bg: #f2f7f2;
-      --cream: #faf7f2;
-      --warm: #f5ede0;
-      --warm-d: #ede0cc;
-      --terra: #c4785a;
-      --terra-l: #d49a80;
-      --terra-d: #a05a3e;
-      --charcoal: #231f1a;
-      --mid: #7a7068;
-      --light: #e8dfd0;
-      --white: #fff;
-      --black: #0a0806;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--cream);
-      color: var(--charcoal);
-      overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* CURSOR */
-    .cur {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background: var(--terra);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width .2s, height .2s;
-    }
-
-    .cur-r {
-      position: fixed;
-      width: 38px;
-      height: 38px;
-      border: 1.5px solid var(--sage);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      opacity: .5;
-      transition: all .35s;
-    }
-
-    .cur-r.big {
-      width: 64px;
-      height: 64px;
-      opacity: .2;
-      border-color: var(--terra);
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      padding: 24px 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all .4s;
-    }
-
-    nav.solid {
-      background: rgba(250, 247, 242, .96);
-      backdrop-filter: blur(20px);
-      padding: 16px 64px;
-      border-bottom: 1px solid rgba(122, 158, 126, .15);
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: .03em;
-      transition: color .3s;
-    }
-
-    nav.solid .logo {
-      color: var(--charcoal);
-    }
-
-    .logo em {
-      font-style: italic;
-      color: var(--sage-l);
-    }
-
-    nav.solid .logo em {
-      color: var(--sage);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      letter-spacing: .06em;
-      color: rgba(255, 255, 255, .6);
-      text-decoration: none;
-      transition: color .2s;
-    }
-
-    nav.solid .nav-links a {
-      color: var(--mid);
-    }
-
-    .nav-links a:hover {
-      color: var(--terra) !important;
-    }
-
-    .nav-pill {
-      padding: 11px 24px;
-      border: 1.5px solid rgba(255, 255, 255, .4);
-      color: var(--white);
-      font-size: 13px;
-      text-decoration: none;
-      border-radius: 100px;
-      transition: all .25s;
-      white-space: nowrap;
-    }
-
-    nav.solid .nav-pill {
-      border-color: var(--terra);
-      color: var(--terra);
-    }
-
-    .nav-pill:hover {
-      background: var(--terra);
-      border-color: var(--terra);
-      color: var(--white) !important;
-    }
-
-    /* HERO */
-    .hero {
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .hero-img-side {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-img-side img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 8s ease;
-      transform: scale(1.08);
-    }
-
-    .hero-img-side::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(35, 31, 26, .6) 0%, rgba(35, 31, 26, .1) 100%);
-    }
-
-    .hero-left {
-      background: var(--charcoal);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 80px 64px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Organic texture overlay */
-    .hero-left::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 0% 100%, rgba(122, 158, 126, .25) 0%, transparent 60%), radial-gradient(ellipse at 100% 0%, rgba(196, 120, 90, .1) 0%, transparent 50%);
-    }
-
-    .hero-label {
-      font-size: 11px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--sage-l);
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      opacity: 0;
-      animation: fadeUp .8s ease forwards .4s;
-      position: relative;
-    }
-
-    .hero-label::before {
-      content: '';
-      width: 32px;
-      height: 1px;
-      background: var(--sage);
-    }
-
-    .hero-h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(44px, 5.5vw, 80px);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.05;
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp .9s ease forwards .6s;
-      position: relative;
-    }
-
-    .hero-h1 em {
-      font-style: italic;
-      color: var(--terra-l);
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      color: rgba(255, 255, 255, .5);
-      line-height: 1.8;
-      font-weight: 300;
-      max-width: 420px;
-      margin-bottom: 48px;
-      opacity: 0;
-      animation: fadeUp .9s ease forwards .8s;
-      position: relative;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      opacity: 0;
-      animation: fadeUp .9s ease forwards 1s;
-      position: relative;
-    }
-
-    .btn-terra {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 18px 40px;
-      background: var(--terra);
-      color: var(--white);
-      font-size: 13px;
-      letter-spacing: .08em;
-      text-decoration: none;
-      border-radius: 100px;
-      transition: all .3s;
-      align-self: flex-start;
-    }
-
-    .btn-terra:hover {
-      background: var(--terra-l);
-      transform: translateX(6px);
-    }
-
-    .btn-terra-arr {
-      font-size: 16px;
-      transition: transform .3s;
-    }
-
-    .btn-terra:hover .btn-terra-arr {
-      transform: translateX(4px);
-    }
-
-    .hero-ghost-link {
-      font-size: 13px;
-      color: rgba(255, 255, 255, .35);
-      text-decoration: none;
-      transition: color .2s;
-      letter-spacing: .04em;
-    }
-
-    .hero-ghost-link:hover {
-      color: var(--sage-l);
-    }
-
-    /* Hero right overlay content */
-    .hero-right {
-      position: relative;
-    }
-
-    .hero-badge {
-      position: absolute;
-      bottom: 48px;
-      left: -48px;
-      z-index: 10;
-      background: var(--cream);
-      padding: 24px 28px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, .12);
-      min-width: 200px;
-      opacity: 0;
-      animation: fadeIn .8s ease forwards 1.2s;
-    }
-
-    .hb-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 44px;
-      font-weight: 400;
-      color: var(--charcoal);
-      line-height: 1;
-    }
-
-    .hb-num em {
-      color: var(--terra);
-      font-style: normal;
-      font-size: 28px;
-    }
-
-    .hb-label {
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-top: 4px;
-    }
-
-    /* Scroll indicator */
-    .scroll-ind {
-      position: absolute;
-      bottom: 40px;
-      right: 40px;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 1.5s;
-    }
-
-    .scroll-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--terra);
-      border-radius: 50%;
-      animation: bounce 2s ease infinite;
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    .scroll-txt {
-      font-size: 9px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .3);
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* BAND */
-    .band {
-      background: var(--terra);
-      padding: 0 64px;
-      display: flex;
-      align-items: stretch;
-      overflow: hidden;
-    }
-
-    .band-item {
-      flex: 1;
-      padding: 36px 0;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      border-right: 1px solid rgba(255, 255, 255, .15);
-      padding-right: 40px;
-      padding-left: 40px;
-    }
-
-    .band-item:first-child {
-      padding-left: 0;
-    }
-
-    .band-item:last-child {
-      border-right: none;
-    }
-
-    .band-icon {
-      font-size: 28px;
-      opacity: .8;
-    }
-
-    .band-txt-label {
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .6);
-      margin-bottom: 4px;
-    }
-
-    .band-txt-val {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px;
-      color: var(--white);
-      font-style: italic;
-    }
-
-    /* INTRO */
-    .intro {
-      padding: 120px 64px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .intro-img {
-      position: relative;
-    }
-
-    .intro-img-frame {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: .85;
-    }
-
-    .intro-img-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      transition: transform .6s ease;
-    }
-
-    .intro-img-frame:hover img {
-      transform: scale(1.04);
-    }
-
-    .intro-img-deco {
-      position: absolute;
-      top: -16px;
-      right: -16px;
-      width: 55%;
-      height: 55%;
-      border: 2px solid var(--sage-l);
-      z-index: -1;
-    }
-
-    .intro-img-tag {
-      position: absolute;
-      bottom: 24px;
-      left: -24px;
-      background: var(--sage-d);
-      color: var(--white);
-      padding: 16px 20px;
-      font-size: 12px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .intro-text {}
-
-    .intro-eyebrow {
-      font-size: 11px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--terra);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .intro-eyebrow::before {
-      content: '';
-      width: 24px;
-      height: 1.5px;
-      background: var(--terra);
-    }
-
-    .intro-h {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 3.5vw, 52px);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 24px;
-      color: var(--charcoal);
-    }
-
-    .intro-h em {
-      font-style: italic;
-      color: var(--sage-d);
-    }
-
-    .intro-p {
-      font-size: 15px;
-      color: var(--mid);
-      line-height: 1.85;
-      font-weight: 300;
-      margin-bottom: 16px;
-    }
-
-    .certif {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--sage-bg);
-      padding: 12px 18px;
-      margin-top: 12px;
-      margin-bottom: 24px;
-      font-size: 13px;
-      color: var(--sage-d);
-    }
-
-    .certif strong {
-      font-weight: 500;
-    }
-
-    .intro-sig {
-      font-family: 'Playfair Display', serif;
-      font-size: 30px;
-      font-style: italic;
-      color: var(--sage-d);
-      margin-top: 28px;
-    }
-
-    .intro-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 28px;
-      font-size: 13px;
-      letter-spacing: .06em;
-      color: var(--terra);
-      text-decoration: none;
-      transition: gap .2s;
-    }
-
-    .intro-cta:hover {
-      gap: 14px;
-    }
-
-    /* SERVICES */
-    .services {
-      padding: 100px 64px;
-      background: var(--warm);
-    }
-
-    .services-head {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: end;
-      margin-bottom: 56px;
-    }
-
-    .services-note {
-      font-size: 15px;
-      color: var(--mid);
-      line-height: 1.75;
-      font-weight: 300;
-      max-width: 420px;
-    }
-
-    .svc-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .svc {
-      background: var(--white);
-      overflow: hidden;
-      position: relative;
-      transition: transform .35s, box-shadow .35s;
-    }
-
-    .svc:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 32px 64px rgba(0, 0, 0, .08);
-    }
-
-    .svc-img {
-      height: 220px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .svc-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .6s ease;
-    }
-
-    .svc:hover .svc-img img {
-      transform: scale(1.06);
-    }
-
-    .svc-img-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(35, 31, 26, .5) 0%, transparent 60%);
-    }
-
-    .svc-img-tag {
-      position: absolute;
-      bottom: 16px;
-      left: 20px;
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .8);
-    }
-
-    .svc-body {
-      padding: 32px 28px;
-    }
-
-    .svc-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 400;
-      margin-bottom: 10px;
-    }
-
-    .svc-desc {
-      font-size: 14px;
-      color: var(--mid);
-      line-height: 1.75;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-
-    .svc-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 20px;
-      border-top: 1px solid var(--light);
-    }
-
-    .svc-detail {
-      font-size: 11px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--sage-d);
-    }
-
-    .svc-price {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      color: var(--terra);
-    }
-
-    .svc-price small {
-      font-size: 13px;
-      font-family: 'Outfit', sans-serif;
-      color: var(--mid);
-    }
-
-    /* PROCESS */
-    .process {
-      padding: 100px 64px;
-    }
-
-    .process-head {
-      text-align: center;
-      margin-bottom: 72px;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      position: relative;
-    }
-
-    .process-grid::before {
-      content: '';
-      position: absolute;
-      top: 36px;
-      left: 12%;
-      width: 76%;
-      height: 1px;
-      background: var(--light);
-    }
-
-    .pstep {
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    .pstep-ring {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      border: 1.5px solid var(--light);
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      color: var(--mid);
-      transition: all .3s;
-      position: relative;
-      z-index: 1;
-    }
-
-    .pstep:hover .pstep-ring {
-      border-color: var(--terra);
-      background: var(--terra);
-      color: var(--white);
-    }
-
-    .pstep-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 400;
-      margin-bottom: 10px;
-    }
-
-    .pstep-desc {
-      font-size: 13px;
-      color: var(--mid);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* SPLIT SECTION */
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 600px;
-    }
-
-    .split-img {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .split-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 6s ease;
-    }
-
-    .split-img:hover img {
-      transform: scale(1.04);
-    }
-
-    .split-img-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(35, 31, 26, .3);
-    }
-
-    .split-content {
-      background: var(--charcoal);
-      padding: 80px 64px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .split-tag {
-      font-size: 11px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--terra-l);
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .split-tag::before {
-      content: '';
-      width: 20px;
-      height: 1px;
-      background: var(--terra-l);
-    }
-
-    .split-h {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 3.5vw, 52px);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.12;
-      margin-bottom: 40px;
-    }
-
-    .split-h em {
-      font-style: italic;
-      color: var(--sage-l);
-    }
-
-    .split-quotes {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .sq {
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .08);
-    }
-
-    .sq:first-child {
-      padding-top: 0;
-    }
-
-    .sq:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .sq-txt {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-style: italic;
-      color: rgba(255, 255, 255, .65);
-      line-height: 1.65;
-      margin-bottom: 14px;
-    }
-
-    .sq-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .sq-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: var(--sage-d);
-      flex-shrink: 0;
-    }
-
-    .sq-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-
-    .sq-name {
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, .7);
-    }
-
-    .sq-role {
-      font-size: 11px;
-      color: rgba(255, 255, 255, .3);
-      margin-top: 1px;
-    }
-
-    .sq-stars {
-      color: var(--terra-l);
-      font-size: 12px;
-      margin-bottom: 8px;
-    }
-
-    /* VALUES */
-    .values {
-      padding: 100px 64px;
-      background: var(--sage-bg);
-    }
-
-    .values-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .val-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .val-item {
-      display: flex;
-      gap: 28px;
-      padding: 32px 0;
-      border-bottom: 1px solid rgba(122, 158, 126, .2);
-      transition: padding .3s;
-    }
-
-    .val-item:last-child {
-      border-bottom: none;
-    }
-
-    .val-item:hover {
-      padding-left: 10px;
-    }
-
-    .val-n {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      font-weight: 400;
-      color: rgba(122, 158, 126, .25);
-      line-height: 1;
-      flex-shrink: 0;
-      width: 60px;
-      transition: color .3s;
-    }
-
-    .val-item:hover .val-n {
-      color: var(--terra);
-    }
-
-    .val-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 8px;
-    }
-
-    .val-desc {
-      font-size: 14px;
-      color: var(--mid);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .val-cta {
-      background: var(--white);
-      padding: 48px;
-      border-top: 3px solid var(--terra);
-    }
-
-    .vct-label {
-      font-size: 10px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--terra);
-      margin-bottom: 14px;
-    }
-
-    .vct-h {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      font-weight: 400;
-      line-height: 1.4;
-      margin-bottom: 24px;
-      color: var(--charcoal);
-    }
-
-    .vct-h em {
-      font-style: italic;
-      color: var(--sage-d);
-    }
-
-    .vct-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 32px;
-      background: var(--charcoal);
-      color: var(--white);
-      font-size: 13px;
-      letter-spacing: .06em;
-      text-decoration: none;
-      border-radius: 100px;
-      transition: all .25s;
-    }
-
-    .vct-btn:hover {
-      background: var(--terra);
-      transform: translateY(-2px);
-    }
-
-    /* FAQ */
-    .faq {
-      padding: 100px 64px;
-      background: var(--white);
-    }
-
-    .faq-inner {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .faq-side {}
-
-    .faq-img {
-      width: 100%;
-      aspect-ratio: .75;
-      overflow: hidden;
-      position: relative;
-      margin-top: 40px;
-    }
-
-    .faq-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-
-    .faq-list {}
-
-    .faq-item {
-      border-bottom: 1px solid var(--light);
-    }
-
-    .faq-q {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 22px 0;
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      color: var(--charcoal);
-      cursor: none;
-      transition: color .2s;
-      gap: 16px;
-    }
-
-    .faq-q:hover {
-      color: var(--sage-d);
-    }
-
-    .faq-tog {
-      width: 32px;
-      height: 32px;
-      border: 1.5px solid var(--light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      color: var(--mid);
-      flex-shrink: 0;
-      transition: all .3s;
-    }
-
-    .faq-item.open .faq-tog {
-      background: var(--terra);
-      border-color: var(--terra);
-      color: var(--white);
-      transform: rotate(45deg);
-    }
-
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .4s ease, padding .4s;
-    }
-
-    .faq-item.open .faq-a {
-      max-height: 160px;
-      padding-bottom: 20px;
-    }
-
-    .faq-a p {
-      font-size: 14px;
-      color: var(--mid);
-      line-height: 1.85;
-      font-weight: 300;
-    }
-
-    /* CONTACT */
-    .contact {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .contact-img {
-      position: relative;
-      overflow: hidden;
-      min-height: 700px;
-    }
-
-    .contact-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .contact-img-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(35, 31, 26, .7) 0%, rgba(35, 31, 26, .2) 50%, transparent 100%);
-    }
-
-    .contact-img-text {
-      position: absolute;
-      bottom: 48px;
-      left: 48px;
-      right: 48px;
-    }
-
-    .cit-label {
-      font-size: 10px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--sage-l);
-      margin-bottom: 8px;
-    }
-
-    .cit-quote {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-style: italic;
-      color: var(--white);
-      line-height: 1.5;
-    }
-
-    .contact-form-side {
-      background: var(--charcoal);
-      padding: 80px 64px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .cf-label {
-      font-size: 10px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--terra-l);
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .cf-label::before {
-      content: '';
-      width: 20px;
-      height: 1px;
-      background: var(--terra-l);
-    }
-
-    .cf-h {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 3.5vw, 52px);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-
-    .cf-h em {
-      font-style: italic;
-      color: var(--sage-l);
-    }
-
-    .cf-sub {
-      font-size: 14px;
-      color: rgba(255, 255, 255, .35);
-      line-height: 1.7;
-      font-weight: 300;
-      margin-bottom: 48px;
-      max-width: 360px;
-    }
-
-    .fg {
-      margin-bottom: 24px;
-    }
-
-    .fl {
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .25);
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .fi {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(255, 255, 255, .1);
-      padding: 11px 0;
-      color: var(--white);
-      font-family: 'Outfit', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      outline: none;
-      transition: border-color .3s;
-    }
-
-    .fi:focus {
-      border-color: var(--terra-l);
-    }
-
-    .fi::placeholder {
-      color: rgba(255, 255, 255, .15);
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .fsub {
-      padding: 16px 44px;
-      background: var(--terra);
-      color: var(--white);
-      border: none;
-      font-family: 'Outfit', sans-serif;
-      font-size: 13px;
-      letter-spacing: .08em;
-      cursor: none;
-      transition: all .25s;
-      border-radius: 100px;
-      margin-top: 12px;
-    }
-
-    .fsub:hover {
-      background: var(--terra-l);
-      transform: translateY(-2px);
-    }
-
-    .cf-infos {
-      display: flex;
-      gap: 32px;
-      margin-top: 36px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255, 255, 255, .06);
-    }
-
-    .cf-info-item {}
-
-    .cf-info-l {
-      font-size: 9px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--terra-l);
-      margin-bottom: 3px;
-    }
-
-    .cf-info-v {
-      font-size: 13px;
-      color: rgba(255, 255, 255, .4);
-      font-weight: 300;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--black);
-      padding: 64px 64px 36px;
-    }
-
-    .foot-top {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 64px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255, 255, 255, .04);
-    }
-
-    .foot-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      color: rgba(255, 255, 255, .4);
-      margin-bottom: 10px;
-    }
-
-    .foot-logo em {
-      color: var(--sage);
-      font-style: normal;
-    }
-
-    .foot-desc {
-      font-size: 13px;
-      color: rgba(255, 255, 255, .18);
-      line-height: 1.75;
-      font-weight: 300;
-      max-width: 260px;
-    }
-
-    .foot-ct {
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--terra);
-      margin-bottom: 16px;
-    }
-
-    .foot-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .foot-links a {
-      font-size: 13px;
-      color: rgba(255, 255, 255, .22);
-      text-decoration: none;
-      transition: color .2s;
-    }
-
-    .foot-links a:hover {
-      color: rgba(255, 255, 255, .55);
-    }
-
-    .foot-bot {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 28px;
-    }
-
-    .foot-copy {
-      font-size: 12px;
-      color: rgba(255, 255, 255, .12);
-    }
-
-    .foot-badge {
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .08);
-    }
-
-    /* TAG helper */
-    .tag {
-      font-size: 11px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--terra);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .tag::before {
-      content: '';
-      width: 24px;
-      height: 1.5px;
-      background: var(--terra);
-    }
-
-    .h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 4vw, 60px);
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 56px;
-    }
-
-    .h2 em {
-      font-style: italic;
-      color: var(--sage-d);
-    }
-
-    /* REVEAL */
-    .rev {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    .rev.vis {
-      opacity: 1;
-      transform: none;
-    }
-
-    .rev-d1 {
-      transition-delay: .1s;
-    }
-
-    .rev-d2 {
-      transition-delay: .2s;
-    }
-
-    .rev-d3 {
-      transition-delay: .3s;
-    }
-
-    .rev-d4 {
-      transition-delay: .4s;
-    }
-
-    @media(max-width:900px) {
-
-      nav,
-      nav.solid {
-        padding: 16px 24px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        height: auto;
-        min-height: 100vh;
-      }
-
-      .hero-img-side {
-        height: 50vh;
-      }
-
-      .hero-badge {
-        display: none;
-      }
-
-      .intro,
-      .values-inner,
-      .faq-inner,
-      .contact {
-        grid-template-columns: 1fr;
-      }
-
-      .split {
-        grid-template-columns: 1fr;
-      }
-
-      .split-img {
-        height: 300px;
-      }
-
-      .services,
-      .process,
-      .values,
-      .faq,
-      .intro {
-        padding: 72px 24px;
-      }
-
-      .band {
-        padding: 0 24px;
-        flex-direction: column;
-      }
-
-      .band-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, .15);
-        padding: 24px 0;
-      }
-
-      .svc-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .process-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .contact-form-side {
-        padding: 60px 24px;
-      }
-
-      .cf-infos {
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .foot-top {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-
-      footer {
-        padding: 40px 24px 28px;
-      }
-
-      .hero-left {
-        padding: 80px 24px 60px;
-      }
-
-      .split-content {
-        padding: 60px 24px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
 
-  <div class="cur" id="cur"></div>
-  <div class="cur-r" id="cur-r"></div>
-
-  <nav id="nav">
-    <a href="#" class="logo">Clara <em>Morel</em></a>
-    <ul class="nav-links">
-      <li><a href="#apropos">À propos</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#processus">Processus</a></li>
-      <li><a href="#temoignages">Témoignages</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-pill">Appel gratuit</a>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <p class="hero-label">Coach de vie certifiée ICF · Genève & à distance</p>
-      <h1 class="hero-h1">Devenez enfin<br>la personne<br><em>que vous voulez être.</em></h1>
-      <p class="hero-sub">Un accompagnement sur-mesure pour celles et ceux qui veulent avancer avec clarté, confiance et
-        intention — dans leur vie et leur carrière.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-terra">Réserver un appel gratuit <span class="btn-terra-arr">→</span></a>
-        <a href="#services" class="hero-ghost-link">Découvrir les offres ↓</a>
-      </div>
-    </div>
-    <div class="hero-img-side hero-right">
-      <img src="https://images.unsplash.com/photo-1527525443983-6e60c75fff46?w=2400&q=100"
-        alt="Groupe de personnes se tenant par la main en forêt" id="heroImg"
-        onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=85'">
-
-    </div>
-    <div class="scroll-ind" style="position:absolute;bottom:40px;right:40px;z-index:2;">
-      <div class="scroll-dot"></div>
-      <p class="scroll-txt"
-        style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:6px;">
-        Scroll</p>
-    </div>
-  </section>
-
-  <!-- BAND -->
-  <div class="band rev">
-    <div class="band-item">
-      <span class="band-icon">🌿</span>
-      <div>
-        <p class="band-txt-label">Certification</p>
-        <p class="band-txt-val">ICF · Niveau ACC</p>
-      </div>
-    </div>
-    <div class="band-item">
-      <span class="band-icon">⏱</span>
-      <div>
-        <p class="band-txt-label">Appel découverte</p>
-        <p class="band-txt-val">Gratuit · 30 minutes</p>
-      </div>
-    </div>
-    <div class="band-item">
-      <span class="band-icon">📍</span>
-      <div>
-        <p class="band-txt-label">Format</p>
-        <p class="band-txt-val">Genève & visio</p>
-      </div>
-    </div>
-    <div class="band-item">
-      <span class="band-icon">💬</span>
-      <div>
-        <p class="band-txt-label">Réponse</p>
-        <p class="band-txt-val">Sous 24 heures</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- À PROPOS -->
-  <section class="intro rev" id="apropos">
-    <div class="intro-img rev">
-      <div class="intro-img-frame">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=85"
-          alt="Clara Morel, coach de vie"
-          onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=85'">
-      </div>
-      <div class="intro-img-deco"></div>
-      <div class="intro-img-tag">Coach certifiée ICF</div>
-    </div>
-    <div class="intro-text rev rev-d1">
-      <p class="intro-eyebrow">À propos</p>
-      <h2 class="intro-h">Je suis Clara.<br><em>Je vous aide à vous retrouver.</em></h2>
-      <p class="intro-p">Après 10 ans dans le conseil en entreprise, j'ai traversé moi-même une période de
-        questionnement profond. C'est cette expérience personnelle qui m'a menée vers le coaching — et vers vous.</p>
-      <p class="intro-p">Je travaille avec des particuliers et des professionnels qui sentent qu'ils sont à un tournant
-        de leur vie, sans encore savoir quelle direction prendre.</p>
-      <div class="certif">✓ <strong>Certifiée ICF</strong> · International Coaching Federation</div>
-      <p class="intro-p">Mon approche est directe, bienveillante et sans jugement. Ensemble, on clarifie, on décide, on
-        avance.</p>
-      <div class="intro-sig">Clara Morel</div>
-      <a href="#contact" class="intro-cta">Réserver un appel découverte →</a>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="services-head">
-      <div>
-        <p class="tag rev">Ce que je propose</p>
-        <h2 class="h2 rev" style="margin-bottom:0;">Un accompagnement <em>à votre rythme.</em></h2>
-      </div>
-      <p class="services-note rev">Chaque programme est conçu pour s'adapter à votre situation, vos objectifs et votre
-        disponibilité.</p>
-    </div>
-    <div class="svc-grid">
-      <div class="svc rev">
-        <div class="svc-img">
-          <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=80" alt="Bilan de vie"
-            onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80'">
-          <div class="svc-img-overlay"></div>
-          <span class="svc-img-tag">Bilan de vie</span>
-        </div>
-        <div class="svc-body">
-          <h3 class="svc-name">Bilan de vie</h3>
-          <p class="svc-desc">Un espace pour faire le point. Où en êtes-vous ? Qu'est-ce qui vous pèse ? Qu'est-ce que
-            vous voulez vraiment ? Idéal pour démarrer.</p>
-          <div class="svc-meta">
-            <span class="svc-detail">3 séances · 90 min</span>
-            <span class="svc-price">490 <small>CHF</small></span>
-          </div>
-        </div>
-      </div>
-      <div class="svc rev rev-d1">
-        <div class="svc-img">
-          <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80" alt="Suivi mensuel"
-            onerror="this.src='https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=600&q=80'">
-          <div class="svc-img-overlay"></div>
-          <span class="svc-img-tag">Suivi mensuel</span>
-        </div>
-        <div class="svc-body">
-          <h3 class="svc-name">Suivi mensuel</h3>
-          <p class="svc-desc">Un accompagnement régulier sur 3 à 6 mois pour ancrer les changements, surmonter les
-            blocages et aller plus loin que vous ne l'imaginez.</p>
-          <div class="svc-meta">
-            <span class="svc-detail">4 séances / mois · 60 min</span>
-            <span class="svc-price">360 <small>CHF/mois</small></span>
-          </div>
-        </div>
-      </div>
-      <div class="svc rev rev-d2">
-        <div class="svc-img">
-          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Atelier groupe"
-            onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&q=80'">
-          <div class="svc-img-overlay"></div>
-          <span class="svc-img-tag">Atelier groupe</span>
-        </div>
-        <div class="svc-body">
-          <h3 class="svc-name">Atelier groupe</h3>
-          <p class="svc-desc">Sessions collectives en petit groupe (4–8 personnes) sur des thèmes ciblés : confiance en
-            soi, transitions professionnelles, relations.</p>
-          <div class="svc-meta">
-            <span class="svc-detail">4–8 pers. · 2h</span>
-            <span class="svc-price">120 <small>CHF</small></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section class="process" id="processus">
-    <div class="process-head">
-      <p class="tag rev" style="justify-content:center;">Comment ça marche</p>
-      <h2 class="h2 rev" style="text-align:center;margin-bottom:0;">Quatre étapes <em>simples.</em></h2>
-    </div>
-    <div class="process-grid">
-      <div class="pstep rev">
-        <div class="pstep-ring">1</div>
-        <h3 class="pstep-name">Appel découverte</h3>
-        <p class="pstep-desc">30 min gratuits. On se rencontre, vous expliquez où vous en êtes, on voit si on travaille
-          bien ensemble.</p>
-      </div>
-      <div class="pstep rev rev-d1">
-        <div class="pstep-ring">2</div>
-        <h3 class="pstep-name">Évaluation</h3>
-        <p class="pstep-desc">On identifie vos besoins réels, vos objectifs et le programme le plus adapté à votre
-          situation.</p>
-      </div>
-      <div class="pstep rev rev-d2">
-        <div class="pstep-ring">3</div>
-        <h3 class="pstep-name">Accompagnement</h3>
-        <p class="pstep-desc">Les séances — en présentiel à Genève ou en visio — avec des outils concrets entre chaque
-          session.</p>
-      </div>
-      <div class="pstep rev rev-d3">
-        <div class="pstep-ring">4</div>
-        <h3 class="pstep-name">Ancrage</h3>
-        <p class="pstep-desc">On consolide les changements pour qu'ils durent. Vous repartez avec des habitudes et une
-          clarté durable.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="split" id="temoignages">
-    <div class="split-img">
-      <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=900&q=85" alt="Nature apaisante forêt"
-        onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=85'">
-      <div class="split-img-overlay"></div>
-    </div>
-    <div class="split-content">
-      <p class="split-tag">Témoignages</p>
-      <h2 class="split-h">Des <em>transformations réelles.</em></h2>
-      <div class="split-quotes">
-        <div class="sq rev">
-          <div class="sq-stars">★★★★★</div>
-          <p class="sq-txt">"Après 8 ans dans un job qui ne me correspondait plus, Clara m'a aidée à oser la transition.
-            Je suis aujourd'hui indépendante et je n'ai jamais été aussi épanouie."</p>
-          <div class="sq-author">
-            <div class="sq-avatar">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Sophie R."
-                onerror="this.style.display='none'">
-            </div>
-            <div>
-              <div class="sq-name">Sophie R.</div>
-              <div class="sq-role">Ancienne consultante, aujourd'hui créatrice</div>
-            </div>
-          </div>
-        </div>
-        <div class="sq rev rev-d1">
-          <div class="sq-stars">★★★★★</div>
-          <p class="sq-txt">"Je venais d'un divorce difficile et je ne savais plus qui j'étais. Les séances avec Clara
-            m'ont redonné confiance et une direction claire."</p>
-          <div class="sq-author">
-            <div class="sq-avatar">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Marc D."
-                onerror="this.style.display='none'">
-            </div>
-            <div>
-              <div class="sq-name">Marc D.</div>
-              <div class="sq-role">Chef de projet, père de deux enfants</div>
-            </div>
-          </div>
-        </div>
-        <div class="sq rev rev-d2">
-          <div class="sq-stars">★★★★★</div>
-          <p class="sq-txt">"L'atelier groupe était une révélation. Réaliser qu'on n'est pas seul dans ses blocages,
-            avec des outils concrets — ça change vraiment tout."</p>
-          <div class="sq-author">
-            <div class="sq-avatar">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Léa P."
-                onerror="this.style.display='none'">
-            </div>
-            <div>
-              <div class="sq-name">Léa P.</div>
-              <div class="sq-role">Infirmière, participante atelier</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p
-        style="font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.18);text-transform:uppercase;margin-top:32px;">
-        Témoignages avec accord · Noms modifiés</p>
-    </div>
-  </section>
-
-  <!-- VALUES -->
-  <section class="values" id="valeurs">
-    <p class="tag rev">Mon approche</p>
-    <h2 class="h2 rev">Ce en quoi <em>je crois.</em></h2>
-    <div class="values-inner">
-      <div class="val-list">
-        <div class="val-item rev">
-          <div class="val-n">01</div>
-          <div>
-            <h3 class="val-title">Écoute sans jugement</h3>
-            <p class="val-desc">Chaque histoire est unique. Je n'ai pas de modèle préconçu — je suis là pour vous aider
-              à trouver le vôtre.</p>
-          </div>
-        </div>
-        <div class="val-item rev rev-d1">
-          <div class="val-n">02</div>
-          <div>
-            <h3 class="val-title">Actions concrètes</h3>
-            <p class="val-desc">Le coaching n'est pas de la thérapie. On travaille sur des décisions, des habitudes, des
-              actions mesurables semaine après semaine.</p>
-          </div>
-        </div>
-        <div class="val-item rev rev-d2">
-          <div class="val-n">03</div>
-          <div>
-            <h3 class="val-title">Respect du rythme</h3>
-            <p class="val-desc">On avance à votre vitesse. Pas de pression, pas de jugement si une semaine a été
-              difficile. On s'adapte toujours.</p>
-          </div>
-        </div>
-      </div>
-      <div class="val-cta rev rev-d1">
-        <p class="vct-label">Prête à commencer ?</p>
-        <h3 class="vct-h">Un appel de 30 minutes peut changer la direction que prend votre vie. <em>C'est gratuit.</em>
-        </h3>
-        <a href="#contact" class="vct-btn">Réserver maintenant →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq">
-    <div class="faq-inner">
-      <div class="faq-side rev">
-        <p class="tag">FAQ</p>
-        <h2 class="h2" style="margin-bottom:24px;">Questions <em>fréquentes.</em></h2>
-        <div class="faq-img">
-          <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600&q=85" alt="Paysage apaisant"
-            onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=85'">
-        </div>
-      </div>
-      <div class="faq-list rev rev-d1">
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Le coaching, c'est quoi exactement ? <div class="faq-tog">+</div>
-          </div>
-          <div class="faq-a">
-            <p>Le coaching est un accompagnement orienté vers l'action. Contrairement à la thérapie qui travaille sur le
-              passé, le coaching se concentre sur le présent et l'avenir — sur ce que vous voulez changer ou atteindre
-              concrètement.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Séances en présentiel ou en visio ? <div class="faq-tog">+</div>
-          </div>
-          <div class="faq-a">
-            <p>Les deux sont possibles. Je reçois à Genève (quartier des Eaux-Vives) ou en visio pour les clients à
-              distance. Le format n'impacte pas la qualité de l'accompagnement.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Combien de temps dure un accompagnement ? <div class="faq-tog">+
-            </div>
-          </div>
-          <div class="faq-a">
-            <p>Le bilan de vie se fait en 3 séances. Un suivi mensuel dure généralement 3 à 6 mois. Certaines personnes
-              atteignent leurs objectifs plus vite, d'autres continuent plus longtemps.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Est-ce que je dois avoir un problème précis ? <div
-              class="faq-tog">+</div>
-          </div>
-          <div class="faq-a">
-            <p>Non. Beaucoup viennent juste avec une sensation que "quelque chose ne va pas". C'est largement suffisant
-              pour commencer. La clarté vient au fil des séances.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Quelle différence avec un thérapeute ? <div class="faq-tog">+
-            </div>
-          </div>
-          <div class="faq-a">
-            <p>Un thérapeute travaille sur la guérison et le passé. Un coach travaille sur la performance et le futur.
-              Les deux sont complémentaires. Si vous traversez un trauma sévère, je vous orienterai vers le bon
-              professionnel.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="contact-img">
-      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=900&q=85" alt="Chemin nature"
-        onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=85'">
-      <div class="contact-img-overlay"></div>
-      <div class="contact-img-text">
-        <p class="cit-label">Ce que mes clients disent</p>
-        <p class="cit-quote">"Je suis venue sans savoir ce que je voulais. Je suis repartie avec un plan et la confiance
-          pour l'exécuter."</p>
-      </div>
-    </div>
-    <div class="contact-form-side">
-      <p class="cf-label">Contact</p>
-      <h2 class="cf-h">Parlons de <em>votre projet.</em></h2>
-      <p class="cf-sub">L'appel découverte est gratuit et sans engagement — 30 minutes pour voir si on travaille bien
-        ensemble.</p>
-      <form>
-        <div class="form-grid">
-          <div class="fg"><label class="fl">Prénom</label><input type="text" class="fi" placeholder="Sophie"></div>
-          <div class="fg"><label class="fl">Nom</label><input type="text" class="fi" placeholder="Dupont"></div>
-        </div>
-        <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="sophie@example.com">
-        </div>
-        <div class="fg"><label class="fl">Ce qui vous amène</label><input type="text" class="fi"
-            placeholder="Transition pro, confiance, relations..."></div>
-        <div class="fg"><label class="fl">Message (optionnel)</label><input type="text" class="fi"
-            placeholder="Dites-m'en plus si vous voulez..."></div>
-        <button type="submit" class="fsub">Réserver mon appel gratuit →</button>
-      </form>
-      <div class="cf-infos">
-        <div class="cf-info-item">
-          <p class="cf-info-l">Email</p>
-          <p class="cf-info-v">contact@claramorel.ch</p>
-        </div>
-        <div class="cf-info-item">
-          <p class="cf-info-l">Lieu</p>
-          <p class="cf-info-v">Genève & visio</p>
-        </div>
-        <div class="cf-info-item">
-          <p class="cf-info-l">Réponse</p>
-          <p class="cf-info-v">Sous 24h</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="foot-top">
-      <div>
-        <div class="foot-logo">Clara <em>Morel</em></div>
-        <p class="foot-desc">Coach de vie certifiée ICF. Accompagnement personnel et professionnel à Genève et à
-          distance depuis 2018.</p>
-      </div>
-      <div>
-        <p class="foot-ct">Navigation</p>
-        <ul class="foot-links">
-          <li><a href="#apropos">À propos</a></li>
-          <li><a href="#services">Services & tarifs</a></li>
-          <li><a href="#processus">Comment ça marche</a></li>
-          <li><a href="#temoignages">Témoignages</a></li>
-          <li><a href="#contact">Contact</a></li>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="logo" aria-label="Sillage, accueil">
+        <img src="assets/img/logo.svg" alt="" width="34" height="24">Sillage.
+      </a>
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links" id="menu">
+          <li><a href="index.html" aria-current="page">Accueil</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="programmes.html">Programmes</a></li>
+          <li><a href="rendez-vous.html">Rendez-vous</a></li>
+          <li class="nav-links-cta"><a href="rendez-vous.html" class="btn">Réserver un appel <span class="arr"
+                aria-hidden="true"></span></a></li>
         </ul>
+      </nav>
+      <a href="rendez-vous.html" class="btn nav-cta">Réserver un appel <span class="arr" aria-hidden="true"></span></a>
+      <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+        aria-controls="menu"><span></span></button>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1>Avancer vers une vie plus claire, plus alignée.</h1>
+        <p>Un coaching sur mesure pour retrouver de l'élan, faire des choix qui vous ressemblent et avancer avec
+          confiance — à Lausanne ou en visio.</p>
+        <a href="programmes.html" class="btn">Découvrir les programmes <span class="arr" aria-hidden="true"></span></a>
       </div>
-      <div>
-        <p class="foot-ct">Contact</p>
-        <ul class="foot-links">
-          <li><a href="#">contact@claramorel.ch</a></li>
-          <li><a href="#">+41 xx xxx xx xx</a></li>
-          <li><a href="#">Genève, Suisse</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-        </ul>
+    </section>
+
+    <div class="container">
+      <div class="bento">
+        <div class="bento-stat wood rev">
+          <strong>96&nbsp;%</strong>
+          <div>
+            <h2>Clients satisfaits</h2>
+            <p>Le fruit d'un accompagnement attentif, pensé pour des changements qui durent.</p>
+          </div>
+        </div>
+        <div class="bento-photo rev d1">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1400&q=80&auto=format&fit=crop"
+            alt="Inès Vautier, coach, souriante dans son cabinet" width="1400" height="930"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1400&q=80&auto=format&fit=crop'">
+        </div>
+        <div class="bento-side">
+          <div class="bento-clients rev d2">
+            <div class="avatars">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80&auto=format&fit=crop"
+                alt="" width="46" height="46">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80&auto=format&fit=crop"
+                alt="" width="46" height="46">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=80&auto=format&fit=crop"
+                alt="" width="46" height="46">
+            </div>
+            <p>Plus de 400 personnes accompagnées depuis 2017</p>
+          </div>
+          <div class="bento-quote rev d3">
+            <blockquote>«&nbsp;Mon rôle n'est pas de vous dire où aller, mais de vous aider à voir clair pour que vous
+              le décidiez vous-même.&nbsp;»</blockquote>
+            <div class="who">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=120&h=120&q=80&auto=format&fit=crop&crop=faces"
+                alt="" width="46" height="46">
+              <div><b>Inès Vautier</b><span>Coach certifiée ICF</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="foot-bot">
-      <p class="foot-copy">© 2025 Clara Morel Coaching · Genève · Tous droits réservés</p>
-      <p class="foot-badge">Démonstration — Alto Studio</p>
+
+    <!-- PROGRAMMES -->
+    <section class="section section--alt" id="programmes">
+      <div class="container">
+        <div class="section-head rev">
+          <span class="pill">Programmes</span>
+          <h2>Des accompagnements conçus pour votre évolution.</h2>
+        </div>
+        <div class="prog-grid">
+          <a class="prog rev" href="programmes.html#cap-clarte">
+            <div class="prog-img">
+              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80&auto=format&fit=crop"
+                alt="Deux femmes en discussion autour d'une table" loading="lazy" width="900" height="600">
+            </div>
+            <div class="prog-body">
+              <h3>Cap Clarté — le bilan</h3>
+              <p class="prog-meta">3 séances de 90 min</p>
+              <div class="prog-foot">
+                <span class="price">480 CHF <small>/programme</small></span>
+                <span class="dot"><span class="arr" aria-hidden="true"></span></span>
+              </div>
+            </div>
+          </a>
+          <a class="prog rev d1" href="programmes.html#elan">
+            <div class="prog-img">
+              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80&auto=format&fit=crop"
+                alt="Deux personnes se tapent dans la main après une séance de travail" loading="lazy" width="900"
+                height="600">
+            </div>
+            <div class="prog-body">
+              <h3>Élan — le suivi sur 3 mois</h3>
+              <p class="prog-meta">12 séances de 60 min</p>
+              <div class="prog-foot">
+                <span class="price">140 CHF <small>/séance</small></span>
+                <span class="dot"><span class="arr" aria-hidden="true"></span></span>
+              </div>
+            </div>
+          </a>
+          <a class="prog rev d2" href="programmes.html#equilibre">
+            <div class="prog-img">
+              <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&q=80&auto=format&fit=crop"
+                alt="Silhouette bras ouverts face au lever du soleil" loading="lazy" width="900" height="600">
+            </div>
+            <div class="prog-body">
+              <h3>Équilibre — vie pro &amp; perso</h3>
+              <p class="prog-meta">8 séances de 60 min</p>
+              <div class="prog-foot">
+                <span class="price">150 CHF <small>/séance</small></span>
+                <span class="dot"><span class="arr" aria-hidden="true"></span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALEURS -->
+    <section class="section" id="valeurs">
+      <div class="container">
+        <div class="section-head rev">
+          <span class="pill">Nos valeurs</span>
+          <h2>Les principes qui guident chaque séance.</h2>
+        </div>
+        <div class="values">
+          <article class="value rev">
+            <h3>Connaissance de soi</h3>
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80&auto=format&fit=crop"
+              alt="Plume traçant des lignes dans un carnet" loading="lazy" width="600" height="394">
+            <p>On commence par regarder honnêtement où vous en êtes : vos envies, vos freins, ce qui compte vraiment
+              pour vous.</p>
+          </article>
+          <article class="value rev">
+            <h3>Progression choisie</h3>
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80&auto=format&fit=crop"
+              alt="Bureau en bois avec ordinateur, café et carnet" loading="lazy" width="600" height="394">
+            <p>Chaque séance a un objectif précis, défini ensemble. Vous avancez à votre rythme, mais vous avancez.</p>
+          </article>
+          <article class="value rev">
+            <h3>Exploration sans jugement</h3>
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80&auto=format&fit=crop"
+              alt="Salon lumineux et calme avec fauteuils" loading="lazy" width="600" height="394">
+            <p>Un cadre confidentiel et bienveillant où tout peut être dit : les doutes, les contradictions, les idées
+              à moitié formées.</p>
+          </article>
+          <article class="value rev">
+            <h3>Mise en pratique</h3>
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80&auto=format&fit=crop"
+              alt="Personnes prenant des notes autour d'une table" loading="lazy" width="600" height="394">
+            <p>Les prises de conscience deviennent des actions concrètes, testées entre deux séances dans votre vie de
+              tous les jours.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- POURQUOI -->
+    <section class="section section--alt" id="pourquoi">
+      <div class="container">
+        <div class="section-head rev">
+          <span class="pill">Pourquoi Sillage</span>
+          <h2>Un accompagnement qui laisse une trace durable.</h2>
+        </div>
+        <div class="why">
+          <div class="why-img rev">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1300&q=80&auto=format&fit=crop"
+              alt="Personne en méditation face au coucher du soleil" loading="lazy" width="1300" height="1190">
+          </div>
+          <div class="why-grid">
+            <article class="feature rev">
+              <svg viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 33s-11-6.500-11-15a6.500 6.500 0 0 1 11-4.500A6.500 6.500 0 0 1 31 18c0 8.500-11 15-11 15z" />
+              </svg>
+              <h3>Une écoute sincère</h3>
+              <p>Chaque séance part de vous, de ce que vous vivez et de ce que vous voulez changer.</p>
+            </article>
+            <article class="feature rev d1">
+              <svg viewBox="0 0 40 40" aria-hidden="true">
+                <circle cx="20" cy="20" r="13" />
+                <circle cx="20" cy="20" r="6" />
+                <path d="M20 20 31 9M27 9h4v4" />
+              </svg>
+              <h3>Un parcours sur mesure</h3>
+              <p>Pas de méthode toute faite : le programme s'ajuste à vos objectifs et à votre réalité.</p>
+            </article>
+            <article class="feature rev">
+              <svg viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 6 8 10.500v8.500c0 7.500 5 12.500 12 15 7-2.500 12-7.500 12-15v-8.500z" />
+                <path d="m14.500 20 4 4 7-8" />
+              </svg>
+              <h3>Un cadre professionnel</h3>
+              <p>Certification ICF, supervision régulière et code de déontologie : un cadre clair et sûr.</p>
+            </article>
+            <article class="feature rev d1">
+              <svg viewBox="0 0 40 40" aria-hidden="true">
+                <rect x="7" y="7" width="26" height="26" rx="5" />
+                <path d="M14 26v-5M20 26v-9M26 26v-12" />
+              </svg>
+              <h3>Des effets qui durent</h3>
+              <p>On construit des habitudes et des repères qui restent bien après la dernière séance.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TÉMOIGNAGES -->
+    <section class="section" id="temoignages">
+      <div class="container">
+        <div class="section-head rev">
+          <span class="pill">Témoignages</span>
+          <h2>Ce qu'en disent nos clients</h2>
+        </div>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <figure class="quote">
+            <figcaption class="who">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=140&q=80&auto=format&fit=crop"
+                alt="" loading="lazy" width="56" height="56">
+              <div><b>Julien Mercier</b><span>Entrepreneur</span></div>
+            </figcaption>
+            <p>Je me suis enfin senti écouté. Chaque séance m'a apporté de la clarté et des outils concrets pour
+              avancer avec confiance.</p>
+          </figure>
+          <figure class="quote">
+            <figcaption class="who">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=140&q=80&auto=format&fit=crop"
+                alt="" loading="lazy" width="56" height="56">
+              <div><b>Camille Rochat</b><span>Responsable RH</span></div>
+            </figcaption>
+            <p>Un espace accueillant où je peux être moi-même. J'ai évolué d'une façon que je n'aurais pas imaginée
+              il y a un an.</p>
+          </figure>
+          <figure class="quote">
+            <figcaption class="who">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=140&q=80&auto=format&fit=crop"
+                alt="" loading="lazy" width="56" height="56">
+              <div><b>Marc Delacroix</b><span>Consultant</span></div>
+            </figcaption>
+            <p>Cet accompagnement a changé ma façon de travailler. J'ai appris à gérer la pression et à poser mes
+              limites.</p>
+          </figure>
+        </div>
+      </div>
+      <div class="marquee marquee--rev">
+        <div class="marquee-track">
+          <figure class="quote">
+            <figcaption class="who">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=140&q=80&auto=format&fit=crop"
+                alt="" loading="lazy" width="56" height="56">
+              <div><b>Thomas Favre</b><span>Ingénieur logiciel</span></div>
+            </figcaption>
+            <p>Chaque séance est préparée et personnalisée. J'ai fait de vrais progrès et je me sens plus équilibré au
+              quotidien.</p>
+          </figure>
+          <figure class="quote">
+            <figcaption class="who">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=140&q=80&auto=format&fit=crop"
+                alt="" loading="lazy" width="56" height="56">
+              <div><b>Élodie Perrin</b><span>Cheffe de projet marketing</span></div>
+            </figcaption>
+            <p>J'étais hésitante au début, mais l'approche d'Inès m'a mise en confiance. Je me sens plus solide et
+              plus libre de mes choix.</p>
+          </figure>
+          <figure class="quote">
+            <figcaption class="who">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=140&q=80&auto=format&fit=crop"
+                alt="" loading="lazy" width="56" height="56">
+              <div><b>Sophie Tanner</b><span>Infirmière</span></div>
+            </figcaption>
+            <p>J'ai installé de meilleures habitudes et retrouvé un regard plus serein sur ma vie. Une étape
+              importante de mon parcours.</p>
+          </figure>
+        </div>
+      </div>
+      <p class="fineprint">Témoignages fictifs, rédigés pour cette démonstration.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--alt" id="faq">
+      <div class="container">
+        <div class="section-head rev">
+          <span class="pill">FAQ</span>
+          <h2>Les questions qu'on nous pose souvent</h2>
+        </div>
+        <div class="faq rev">
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="true" aria-controls="faq-1">Le coaching, c'est quoi
+              exactement ?</button>
+            <div class="faq-a" id="faq-1">
+              <div>
+                <p>Un accompagnement tourné vers l'action. On part de votre situation actuelle pour clarifier ce que
+                  vous voulez, lever ce qui vous retient et mettre en place des changements concrets.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-2">Quelle différence avec une
+              thérapie ?</button>
+            <div class="faq-a" id="faq-2">
+              <div>
+                <p>La thérapie soigne et explore le passé ; le coaching se concentre sur le présent et l'avenir. Les
+                  deux sont complémentaires. Si votre situation relève d'un suivi thérapeutique, je vous oriente vers
+                  un professionnel adapté.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-3">Les séances ont lieu en
+              cabinet ou en visio ?</button>
+            <div class="faq-a" id="faq-3">
+              <div>
+                <p>Les deux. Je reçois à Lausanne, à deux pas de la gare, et en visio pour les personnes à distance.
+                  Vous pouvez alterner d'une séance à l'autre.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-4">Faut-il arriver avec un
+              objectif précis ?</button>
+            <div class="faq-a" id="faq-4">
+              <div>
+                <p>Non. Beaucoup de personnes viennent avec le simple sentiment que quelque chose doit bouger. C'est
+                  suffisant pour commencer : l'objectif se précise au fil des premières séances.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-5">Comment se passe le premier
+              contact ?</button>
+            <div class="faq-a" id="faq-5">
+              <div>
+                <p>Par un appel découverte gratuit de 30 minutes, sans engagement. On fait connaissance, vous
+                  m'expliquez votre situation et on voit ensemble si un accompagnement a du sens.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta wood rev">
+          <h2>Commencez votre chemin vers plus de clarté.</h2>
+          <a href="rendez-vous.html" class="btn btn--light">Réserver un appel <span class="arr"
+              aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="logo" aria-label="Sillage, accueil">
+            <img src="assets/img/logo.svg" alt="" width="34" height="24">Sillage.
+          </a>
+          <p>Sillage est né d'une conviction : un changement choisi laisse une trace durable. Par l'écoute, des
+            méthodes éprouvées et un cadre exigeant, nous vous aidons à avancer avec clarté et confiance.</p>
+        </div>
+        <div>
+          <h2>Liens rapides</h2>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="programmes.html">Programmes</a></li>
+            <li><a href="rendez-vous.html">Rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li>bonjour@sillage-coaching.ch</li>
+            <li>Rue du Petit-Chêne 00<br>1003 Lausanne</li>
+            <li>+41 21 000 00 00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bot">
+        <p>© 2026 Sillage · Site de démonstration, contenu fictif</p>
+        <p>Démonstration — Alto Studio</p>
+      </div>
     </div>
   </footer>
 
-  <script>
-    const cur = document.getElementById('cur'), cr = document.getElementById('cur-r');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
-    (function a() { rx += (mx - rx) * .1; ry += (my - ry) * .1; cr.style.left = rx + 'px'; cr.style.top = ry + 'px'; requestAnimationFrame(a); })();
-    document.querySelectorAll('a,button,.svc,.pstep,.sq,.val-item,.faq-q').forEach(el => {
-      el.addEventListener('mouseenter', () => cr.classList.add('big'));
-      el.addEventListener('mouseleave', () => cr.classList.remove('big'));
-    });
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('solid', window.scrollY > 80);
-    });
-    function toggleFaq(el) {
-      const item = el.parentElement;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
-    const obs = new IntersectionObserver(e => {
-      e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('vis'); obs.unobserve(x.target); } });
-    }, { threshold: .1 });
-    document.querySelectorAll('.rev').forEach(el => obs.observe(el));
-
-    // Slow zoom hero img on load
-    window.addEventListener('load', () => {
-      const img = document.getElementById('heroImg');
-      if (img) img.style.transform = 'scale(1)';
-    });
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>
